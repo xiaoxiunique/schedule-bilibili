@@ -1,4 +1,4 @@
-const axios = require('lodash');
+const axios = require('axios');
 
 (async function () {
   console.info(' ----- start send message ----- ');
