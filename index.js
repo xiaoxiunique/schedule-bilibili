@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('lodash');
 
 (async function () {
   console.info(' ----- start send message ----- ');
