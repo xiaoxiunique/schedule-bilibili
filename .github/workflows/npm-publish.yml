@@ -4,8 +4,9 @@
 name: SCHEDULE-NEW
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+    - master
 
 jobs:
   build:
