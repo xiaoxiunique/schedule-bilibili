@@ -1,5 +1,5 @@
-import Base from './base';
-import ReqConfAPI from './reqConf';
+const Base = require('./base');
+const ReqConfAPI = require('./reqConf');
 
 class Recommend extends Base {
   constructor(args) {
@@ -43,4 +43,4 @@ class Recommend extends Base {
   }
 }
 
-export default Recommend;
+module.exports = Recommend;

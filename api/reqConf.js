@@ -1,4 +1,4 @@
-import Base from './base';
+const Base = require('./base');
 
 class ReqConf extends Base {
   constructor(args) {
@@ -16,4 +16,4 @@ class ReqConf extends Base {
   }
 }
 
-export default ReqConf;
+module.exports = ReqConf;

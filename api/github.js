@@ -1,4 +1,4 @@
-import Base from './base';
+const Base = require('./base');
 
 class Github extends Base {
   constructor(args) {
@@ -17,4 +17,4 @@ class Github extends Base {
   }
 }
 
-export default Github;
+module.exports = Github;
