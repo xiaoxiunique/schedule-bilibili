@@ -1,6 +1,7 @@
 const tasks = require('./task');
 const fs = require('fs');
 const path = require('path');
+const _ = require('lodash');
 
 (async function () {
   const [jct, sessData, userId] = process.argv.slice(2);
@@ -23,7 +24,7 @@ const path = require('path');
 
   const taskList = taskLists
     .reduce((acc, taskName) => {
-      const taskNameClass = require('./task/' + taskName);
+      const taskNameClass = require('./task/' + _.lowerFirst(taskName));
       const newObj = new taskNameClass();
       return acc.concat(newObj);
     }, [])
