@@ -12,6 +12,10 @@ class mangaSign extends base {
     this.request = new Request();
   }
 
+  order() {
+    return 3;
+  }
+
   async run() {
     const result = await this.request.post(
       this.mangaSignURL,

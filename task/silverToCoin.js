@@ -16,6 +16,10 @@ class silverToCoin extends base {
     this.request = new Request();
   }
 
+  order() {
+    return 4;
+  }
+
   async run() {
     const result = await this.request.get(this.silverToCoinURL);
     if (result.code === 0) {
