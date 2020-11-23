@@ -1,17 +1,9 @@
 const Base = require('./base');
+const qs = require('qs');
 
 class Bilibili extends Base {
   constructor(args) {
     super(args);
-    const bilibiliJct = 'c5f9db3478d7934e097f3761f6e56dfb';
-    const sessData = 'ec67d1cd%2C1621013733%2C50a17*b1';
-    const userId = '344036334';
-
-    this.userId = userId;
-    this.jct = bilibiliJct;
-    this.userAgent =
-      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15';
-    this.cookie = `bili_jct=${bilibiliJct};SESSDATA=${sessData};DedeUserID=${userId}`;
   }
   /**
    * 登录检查，检查登录是否有效
@@ -89,30 +81,44 @@ class Bilibili extends Base {
 
   async videoHeartBeat(bvid) {
     const videoHeartbeatURL =
-      'https://api.bilibili.com/x/click-interface/web/heartbeat?bvid=' + bvid + '&played_time=' + 90;
+      'https://api.bilibili.com/x/click-interface/web/heartbeat';
 
-    const result = await this.post(videoHeartbeatURL);
+    const result = await this.post(
+      videoHeartbeatURL,
+      qs.stringify({
+        bvid,
+        csrf: this.jct,
+      })
+    );
     if (result.code === 0) {
-      console.info("----- 视频播放成功 -----")
+      console.info('----- 视频播放成功 -----');
     } else {
-      console.error("----- error 视频播放失败 -----" + result.message)
+      console.error('----- error 视频播放失败 -----' + result.message);
     }
     return result;
   }
 
   async videoShare(bvid) {
-    const URL = `https://api.bilibili.com/x/web-interface/share/add?bvid=${bvid}&csrf=${this.jct}`;
-    const result = await this.post(URL);
+    const URL = `https://api.bilibili.com/x/web-interface/share/add`;
+    const result = await this.post(
+      URL,
+      require('qs').stringify({
+        bvid,
+        csrf: this.jct,
+      })
+    );
+
     if (result.code === 0) {
-      console.info("----- 视频分享成功 -----")
+      console.info('----- 视频分享成功 -----');
     } else {
-      console.error("----- error 视频分享失败 -----" + result.message)
+      console.error('----- error 视频分享失败 -----' + result.message);
     }
   }
 
   async Manga() {
-    const URL = "https://manga.bilibili.com/twirp/activity.v1.Activity/ClockIn";
-
+    const URL = `https://manga.bilibili.com/twirp/activity.v1.Activity/ClockIn?platform=ios`;
+    const result = await this.post(URL);
+    return result;
   }
 
   __randomRegion() {
