@@ -37,7 +37,7 @@ class videoWatch extends base {
 
     // 分享任务
     if (!user.share) {
-      await bilibiliAPI.videoShare(
+      await this.videoShare(
         user.rankList[parseInt(Math.random() * user.rankList.length)]
       );
     } else {
