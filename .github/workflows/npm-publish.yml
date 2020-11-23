@@ -29,9 +29,10 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
+      - name: Run Project
         env:
-        BILIBILI_JCT: ${{ secrets.BILIBILI_JCT }}
-        USERID: ${{ secrets.USERID }}
-        SESSDATA: ${{ secrets.SESSDATA }}
+          BILIBILI_JCT: ${{ secrets.BILIBILI_JCT }}
+          USERID: ${{ secrets.USERID }}
+          SESSDATA: ${{ secrets.SESSDATA }}
         run: npm ci
         run: node index.js ${BILIBILIJCT SESSDATA USERID}
