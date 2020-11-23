@@ -15,7 +15,7 @@ SCHEDULE-BILIBILI
 
 
 
-本项目开发参考项目 [BILIBILI-HELPER](https://github.com/JunzhouLiu/BILIBILI-HELPER)，原本是为了使用 Github Actions 利用 Server 酱的推送能力实现一些新闻推送的，后面遇到蛮多坑，也是在本周日的时候 出于好玩 Clone BILIBILI-HELPER 的代码，后尝试用 Node.js 用户了一天时间 重写了 原本由 Java 实现的 BILIBILI-HELPER.
+本项目开发参考项目 [BILIBILI-HELPER](https://github.com/JunzhouLiu/BILIBILI-HELPER)，原本是为了使用 Github Actions 利用 Server 酱的推送能力实现一些新闻推送的，后面遇到蛮多坑，也是在本周日的时候 出于好玩 Clone BILIBILI-HELPER 的代码，后尝试用 Node.js 花了一天时间 重写了一下。
 
 
 

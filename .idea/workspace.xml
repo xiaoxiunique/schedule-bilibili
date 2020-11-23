@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="569438d3-d06d-4d8c-b129-f219537d7722" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/npm-publish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/npm-publish.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
