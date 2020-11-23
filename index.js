@@ -4,6 +4,7 @@ const path = require('path');
 
 (async function () {
   const [jct, sessData, userId] = process.argv.slice(2);
+  console.log('jct, sessData, userId: ', jct, sessData, userId);
 
   if (!jct || !sessData || !userId) {
     console.error('----- [参数传递不正确，请检查参数] -----');
