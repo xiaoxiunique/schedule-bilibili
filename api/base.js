@@ -1,5 +1,7 @@
 const axios = require('axios');
 const _ = require('lodash');
+const fs = require('fs');
+const path = require('path');
 
 class Base {
   constructor() {
@@ -14,10 +16,16 @@ class Base {
     this.pathURL = '';
     this.timeOut = 2000;
 
+    const user = JSON.parse(
+      fs.readFileSync(path.join(__dirname, './../task/userStatus.json'), {
+        encoding: 'utf-8',
+      })
+    );
+
     // user data
-    const bilibiliJct = 'fb0656736569771d995a4697cfda5416';
-    const sessData = '796e9bd8%2C1607454589%2C67af4*61';
-    const userId = '65404157';
+    const bilibiliJct = user.jct;
+    const sessData = user.sessData;
+    const userId = user.userId;
 
     this.userId = userId;
     this.jct = bilibiliJct;

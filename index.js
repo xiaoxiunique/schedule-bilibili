@@ -1,8 +1,21 @@
-const Bilibili = require('./api/bilibili');
-
 const tasks = require('./task');
+const fs = require('fs');
+const path = require('path');
 
 (async function () {
+  const [jct, sessData, userId] = process.argv.slice(2);
+
+  if (!jct || !sessData || !userId) {
+    console.error('----- [参数传递不正确，请检查参数] -----');
+    return;
+  }
+  // save user data
+  fs.writeFileSync(
+    path.join(__dirname, './task/userStatus.json'),
+    JSON.stringify({ jct, sessData, userId }),
+    { encoding: 'utf-8' }
+  );
+
   // run task
   let taskLists = Object.keys(tasks);
   taskLists = taskLists.filter((f) => !['Base', 'Index'].some((s) => f === s));

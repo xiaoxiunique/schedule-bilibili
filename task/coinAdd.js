@@ -18,6 +18,7 @@ class coinAdd extends base {
   }
 
   async run() {
+    const user = this.getUserStatus();
     //投币最多操作数 解决csrf校验失败时死循环的问题
     let addCoinOperateCount = 0;
     //安全检查，最多投币数
@@ -26,15 +27,16 @@ class coinAdd extends base {
     let useCoin = 0;
 
     console.info('----- [投币任务开始] -----');
-    console.info(`----- [开始投币] 投币: , 程序当前已投: ${useCoin} -----`);
     while (useCoin < maxNumberOfCoins) {
       addCoinOperateCount++;
 
-      const bvid = 'BV1iA411x7B3';
+      const bvid =
+        user.rankList[parseInt(Math.random() * user.rankList.length)];
       const title = await this.getVideoTitle(bvid);
       const coinFlag = await this.coinAdd(bvid, 1, 1);
 
       if (!coinFlag) {
+        useCoin++;
         break;
       }
 
@@ -45,6 +47,8 @@ class coinAdd extends base {
         break;
       }
     }
+
+    console.info(`----- 程序当前已投: ${useCoin} -----`);
   }
 
   pauseTime(millTime) {
