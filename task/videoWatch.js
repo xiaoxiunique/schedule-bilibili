@@ -1,5 +1,4 @@
 const base = require('./base');
-const Request = require('../api/base');
 const qs = require('qs');
 const fs = require('fs');
 
@@ -9,7 +8,6 @@ const fs = require('fs');
 class videoWatch extends base {
   constructor(args) {
     super(args);
-    this.request = new Request();
   }
 
   order() {

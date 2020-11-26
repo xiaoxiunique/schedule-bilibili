@@ -1,5 +1,4 @@
 const base = require('./base');
-const Request = require('./../api/base');
 const qs = require('qs');
 
 /**
@@ -9,7 +8,6 @@ class mangaSign extends base {
   constructor(args) {
     super(args);
     this.mangaSignURL = `https://manga.bilibili.com/twirp/activity.v1.Activity/ClockIn`;
-    this.request = new Request();
   }
 
   order() {

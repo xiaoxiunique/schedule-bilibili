@@ -1,5 +1,4 @@
 const base = require('./base');
-const Request = require('../api/base');
 const qs = require('qs');
 
 /**
@@ -9,8 +8,6 @@ class coinAdd extends base {
   constructor(args) {
     super(args);
     this.coinAddURL = `https://api.live.bilibili.com/pay/v1/Exchange/silver2coin`;
-
-    this.request = new Request();
   }
 
   order() {

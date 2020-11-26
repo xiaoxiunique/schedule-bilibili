@@ -1,13 +1,11 @@
 const _ = require('lodash');
 const fs = require('fs');
 const Request = require('./../api/base');
+const { Http2ServerRequest } = require('http2');
 const request = new Request();
 class Task {
-  constructor(jct, sessData, userId) {
-    this.jct = jct;
-    this.sessData = sessData;
-    this.userId = userId;
-
+  constructor() {
+    this.request = new Request();
     // util
     this._ = _;
   }

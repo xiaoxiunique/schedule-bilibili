@@ -1,5 +1,4 @@
 const base = require('./base');
-const Request = require('../api/base');
 const qs = require('qs');
 const fs = require('fs');
 
@@ -7,11 +6,6 @@ const fs = require('fs');
  * 漫画签到
  */
 class liveCheckIn extends base {
-  constructor(args) {
-    super(args);
-    this.request = new Request();
-  }
-
   order() {
     return 6;
   }

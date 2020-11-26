@@ -7,11 +7,6 @@ const fs = require('fs');
  * 给自己充电
  */
 class liveCheckIn extends base {
-  constructor(args) {
-    super(args);
-    this.request = new Request();
-  }
-
   order() {
     return 7;
   }

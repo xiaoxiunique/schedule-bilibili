@@ -1,5 +1,4 @@
 const base = require('./base');
-const Request = require('../api/base');
 const qs = require('qs');
 
 /**
@@ -12,8 +11,6 @@ class silverToCoin extends base {
     // 查询银瓜子兑换状态
     this.silverToCoinStatusURL =
       'https://api.live.bilibili.com/pay/v1/Exchange/getStatus';
-
-    this.request = new Request();
   }
 
   order() {
