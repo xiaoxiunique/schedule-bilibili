@@ -2,9 +2,6 @@ const base = require('./base');
 const qs = require('qs');
 const fs = require('fs');
 
-/**
- * 漫画签到
- */
 class userCheck extends base {
   constructor(args) {
     super(args);
@@ -16,7 +13,12 @@ class userCheck extends base {
 
   async run() {
     const userCheckURL = 'https://api.bilibili.com/x/web-interface/nav';
-    const result = await this.request.get(userCheckURL);
+    let result = {};
+    try {
+      result = await this.request.get(userCheckURL);
+    } catch (e) {
+      await this.send('登录失效了，速来更新');
+    }
     const isLogin = this._.get(result, 'data.isLogin');
     const username = this._.get(result, 'data.uname');
     const money = this._.get(result, 'data.money');
@@ -30,6 +32,7 @@ class userCheck extends base {
       this.setUserStatus(result.data);
     } else {
       console.info('----- login fail -----');
+      await this.send('登录失效了，速来更新');
     }
   }
 

@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const fs = require('fs');
 const Request = require('./../api/base');
-const { Http2ServerRequest } = require('http2');
+const notice = require('./../api/notice');
 const request = new Request();
 class Task {
   constructor() {
@@ -19,6 +19,11 @@ class Task {
 
   order() {
     throw new Error('order() Must be implement');
+  }
+
+  async send(msg) {
+    console.log('msg: ', msg);
+    await notice(this.getUserStatus().serverSecret, 'Bilibili 通知', msg);
   }
 
   /**

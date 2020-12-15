@@ -4,8 +4,14 @@ const path = require('path');
 const _ = require('lodash');
 
 (async function () {
-  const [jct, sessData, userId] = process.argv.slice(2);
-  console.log('jct, sessData, userId: ', jct, sessData, userId);
+  const [jct, sessData, userId, serverSecret] = process.argv.slice(2);
+  console.log(
+    'jct, sessData, userId, serverSecret: ',
+    jct,
+    sessData,
+    userId,
+    serverSecret
+  );
 
   if (!jct || !sessData || !userId) {
     console.error('----- [参数传递不正确，请检查参数] -----');
@@ -14,7 +20,7 @@ const _ = require('lodash');
   // save user data
   fs.writeFileSync(
     path.join(__dirname, './task/userStatus.json'),
-    JSON.stringify({ jct, sessData, userId }),
+    JSON.stringify({ jct, sessData, userId, serverSecret }),
     { encoding: 'utf-8' }
   );
 

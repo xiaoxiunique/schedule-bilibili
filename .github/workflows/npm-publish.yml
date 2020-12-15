@@ -34,4 +34,5 @@ jobs:
           BILIBILI_JCT: ${{ secrets.BILIBILI_JCT }}
           USERID: ${{ secrets.USERID }}
           SESSDATA: ${{ secrets.SESSDATA }}
-        run: npm ci && node index.js ${BILIBILI_JCT} ${SESSDATA} ${USERID}
+          SERVER_SECRET: ${{ secrets.SERVER_SECRET }}
+        run: npm ci && node index.js ${BILIBILI_JCT} ${SESSDATA} ${USERID} ${SERVER_SECRET}
