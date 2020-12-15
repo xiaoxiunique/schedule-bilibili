@@ -17,11 +17,7 @@ class calcLevel extends base {
     console.info(`----- [今日获取得到总经验值为: ${todayExp}] -----`);
     const currLevel = user.level_info.current_level;
     if (currLevel < 6) {
-      await this.send(
-        `----- [按照当前进度升级到 Lv${currLevel}] 还需要${
-          needExp / todayExp
-        } 天 -----`
-      );
+      await this.send('任务执行完成');
     }
   }
 

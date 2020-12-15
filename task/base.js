@@ -22,8 +22,11 @@ class Task {
   }
 
   async send(msg) {
-    console.log('msg: ', msg);
-    await notice(this.getUserStatus().serverSecret, 'Bilibili 通知', msg);
+    await notice(
+      this.getUserStatus().serverSecret,
+      'Bilibili 通知' + +new Date(),
+      msg
+    );
   }
 
   /**
