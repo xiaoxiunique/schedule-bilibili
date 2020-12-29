@@ -38,16 +38,14 @@ SCHEDULE-BILIBILI
 2. **获取 Bilibili Cookies**
 
 - 浏览器打开并登录 [bilibili 网站](https://www.bilibili.com/)
-- 按 F12 打开 「开发者工具」 找到 应用程序/Application -> 存储 -> Cookies
-- 找到 `bili_jct` `SESSDATA` `DEDEUSERID` 三项，并复制值，创建对应的 GitHub Secrets。
+- 按 F12 找到 Network 在搜索框中 搜索 nav
+- 复制 nav 请求的 cookie
 
-3. **点击项目 Settings -> Secrets -> New Secrets 添加以下 3 个 Secrets。**
+3. **点击项目 Settings -> Secrets -> New Secrets 添加 Cookie Secrets。**
 
-| Name       | Value            |
-| ---------- | ---------------- |
-| DEDEUSERID | 从 Cookie 中获取 |
-| SESSDATA   | 从 Cookie 中获取 |
-| BILI_JCT   | 从 Cookie 中获取 |
+| Name   | Value           |
+| ------ | --------------- | --- |
+| COOKIE | 获取到的 cookie | =   |
 
 4. **开启 Actions 并触发每日自动执行**
 
