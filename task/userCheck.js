@@ -14,21 +14,24 @@ class userCheck extends base {
   async run() {
     const userCheckURL = 'https://api.bilibili.com/x/web-interface/nav';
     let result = {};
-    result = await this.request.get(userCheckURL);
+    try {
+      result = await this.request.get(userCheckURL);
+    } catch (e) {
+      await this.send('登录失效了，速来更新' + +new Date());
+    }
     const isLogin = this._.get(result, 'data.isLogin');
     const username = this._.get(result, 'data.uname');
     const money = this._.get(result, 'data.money');
     if (isLogin) {
       this.userInfo = result.data;
-
       console.info('----- login success -----');
       console.info('----- [username] - ' + username);
       console.info('----- [金币余额] - ' + money);
-
       this.setUserStatus(result.data);
+      return true;
     } else {
-      console.info('----- login fail -----');
       await this.send('登录失效了，速来更新' + +new Date());
+      return false;
     }
   }
 

@@ -4,23 +4,17 @@ const path = require('path');
 const _ = require('lodash');
 
 (async function () {
-  const [jct, sessData, userId, serverSecret] = process.argv.slice(2);
-  console.log(
-    'jct, sessData, userId, serverSecret: ',
-    jct,
-    sessData,
-    userId,
-    serverSecret
-  );
+  const [cookie, serverSecret] = process.argv.slice(2);
+  console.log('cookie, serverSecret: ', cookie, serverSecret);
 
-  if (!jct || !sessData || !userId) {
+  if (!cookie) {
     console.error('----- [参数传递不正确，请检查参数] -----');
     return;
   }
   // save user data
   fs.writeFileSync(
     path.join(__dirname, './task/userStatus.json'),
-    JSON.stringify({ jct, sessData, userId, serverSecret }),
+    JSON.stringify({ cookie, serverSecret }),
     { encoding: 'utf-8' }
   );
 
@@ -39,6 +33,9 @@ const _ = require('lodash');
   for (const task of taskList) {
     console.info('\n');
     console.info(`----- 执行 ${task.getTaskName()} -----`);
-    await task.run();
+    const r = await task.run();
+    if (r === false) {
+      break;
+    }
   }
 })();

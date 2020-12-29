@@ -49,12 +49,11 @@ class videoWatch extends base {
    * 查询 存在哪些视频
    */
   async queryDynamicNew() {
-    const userInfo = this.getUserStatus();
     const dynamicNewURL =
       'https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new';
 
     const params = {
-      uid: userInfo.userId,
+      uid: this.getCookie('DedeUserID'),
       type_list: 8,
       from: '',
       platform: 'web',
@@ -96,7 +95,7 @@ class videoWatch extends base {
       videoHeartbeatURL,
       qs.stringify({
         bvid,
-        csrf: user.jct,
+        csrf: this.getCookie('bili_jct'),
       })
     );
     if (result.code === 0) {
@@ -108,13 +107,12 @@ class videoWatch extends base {
   }
 
   async videoShare(bvid) {
-    const user = this.getUserStatus();
     const URL = `https://api.bilibili.com/x/web-interface/share/add`;
     const result = await this.request.post(
       URL,
       require('qs').stringify({
         bvid,
-        csrf: user.jct,
+        csrf: this.getCookie('bili_jct'),
       })
     );
 

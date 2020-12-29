@@ -21,6 +21,33 @@ class Task {
     throw new Error('order() Must be implement');
   }
 
+  async get(url, params, field) {
+    let result = {};
+    try {
+      result = await this.request.get(url, params, field);
+    } catch (e) {
+      console.error('请求失败');
+    }
+    return result;
+  }
+
+  async post(url, params, field) {
+    let result = {};
+    try {
+      result = await this.request.post(url, params, field);
+    } catch (e) {
+      console.error('请求失败');
+    }
+  }
+
+  async getCookie(field) {
+    const userInfo = this.getUserStatus();
+    const res = userInfo.cookie.split(';');
+    const [tstr] = res.filter((f) => f.indexOf(field) != -1);
+    let [_, jct] = tstr.split('=');
+    return jct;
+  }
+
   async send(msg) {
     await notice(
       this.getUserStatus().serverSecret,

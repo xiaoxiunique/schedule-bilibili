@@ -31,8 +31,6 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - name: Run Project
         env:
-          BILIBILI_JCT: ${{ secrets.BILIBILI_JCT }}
-          USERID: ${{ secrets.USERID }}
-          SESSDATA: ${{ secrets.SESSDATA }}
+          COOKIE: ${{ secrets.COOKIE }}
           SERVER_SECRET: ${{ secrets.SERVER_SECRET }}
-        run: npm ci && node index.js ${BILIBILI_JCT} ${SESSDATA} ${USERID} ${SERVER_SECRET}
+        run: npm ci && node index.js "${COOKIE}" ${SERVER_SECRET}

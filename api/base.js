@@ -2,6 +2,7 @@ const axios = require('axios');
 const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
+const send = require('./notice');
 
 class Base {
   constructor() {
@@ -22,16 +23,9 @@ class Base {
       })
     );
 
-    // user data
-    const bilibiliJct = user.jct;
-    const sessData = user.sessData;
-    const userId = user.userId;
-
-    this.userId = userId;
-    this.jct = bilibiliJct;
     this.userAgent =
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15';
-    this.cookie = `bili_jct=${bilibiliJct};SESSDATA=${sessData};DedeUserID=${userId}`;
+    this.cookie = user.cookie;
   }
 
   async get(url, params = {}, field = '') {
@@ -42,11 +36,15 @@ class Base {
       'User-Agent': this.userAgent,
       Cookie: this.cookie,
     };
-
-    const result = await axios.get(url, {
-      headers,
-      params,
-    });
+    let result = {};
+    try {
+      result = await axios.get(url, {
+        headers,
+        params,
+      });
+    } catch (e) {
+      await send();
+    }
 
     return field === '' ? result.data : this._.get(result.data, field);
   }

@@ -16,14 +16,15 @@ class dayTask extends base {
 
   async run() {
     const dayTaskURL = 'https://api.bilibili.com/x/member/web/exp/reward';
-    let result = await this.request.get(dayTaskURL);
+    let result = await this.get(dayTaskURL);
+    console.log('result: ', result);
     if (+result.code === 0) {
       console.info('----- 请求本日任务状态成功 -----');
       this.setUserStatus(result.data);
     } else {
       // 偶发性失败，在请求一次
       console.error(`----- [error] ${result.message} -----`);
-      result = await this.request.get(dayTaskURL);
+      result = await this.get(dayTaskURL);
       this.setUserStatus(result.data);
     }
   }
