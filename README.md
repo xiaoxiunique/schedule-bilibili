@@ -41,13 +41,23 @@ SCHEDULE-BILIBILI
 - 按 F12 找到 Network 在搜索框中 搜索 nav
 - 复制 nav 请求的 cookie
 
+![](https://gitee.com/xiaoxiunique/picgo-image/raw/master/atips/20201229162832.png)
+
 3. **点击项目 Settings -> Secrets -> New Secrets 添加 Cookie Secrets。**
 
 | Name   | Value           |
 | ------ | --------------- | --- |
-| COOKIE | 获取到的 cookie | =   |
+| COOKIE | 获取到的 cookie |     |
 
-4. **开启 Actions 并触发每日自动执行**
+![](https://gitee.com/xiaoxiunique/picgo-image/raw/master/atips/20201229163048.png)
+
+
+
+
+
+
+
+1. **开启 Actions 并触发每日自动执行**
 
 **Github Actions 默认处于关闭状态，还大家请手动开启 Actions ，执行一次工作流，验证是否可以正常工作。**
 
