@@ -9,7 +9,7 @@ on:
       - master
   workflow_dispatch:
   schedule:
-    - cron: "2 1 * * *"
+    - cron: "0 2 * * *"
 
 jobs:
   build:
