@@ -19,7 +19,7 @@ class coinAdd extends base {
     //投币最多操作数 解决csrf校验失败时死循环的问题
     let addCoinOperateCount = 0;
     //安全检查，最多投币数
-    let maxNumberOfCoins = 5;
+    let maxNumberOfCoins = 0;
     //已投的硬币
     let useCoin = 0;
 
